@@ -1,0 +1,11 @@
+jobs:
+  - name: generate-manifest
+    type: manifest
+    steps:
+      - GET nginx-image
+
+  - name: deploy-service
+    type: ecsDeploy
+    steps:
+      - GET generate-manifest
+      - GET myEcsCluster
