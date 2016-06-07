@@ -1,0 +1,15 @@
+resources:
+  - name: nginx-image
+    type: image
+    integration: pranay-docker
+    source:
+      name: "library/nginx"
+      isPull: false
+      tag: latest
+
+  - name: myEcsCluster
+    type: ecsCluster
+    integration: pranay-ecs
+    source:
+     name : "default" #name of the cluster we are deploying
+     region: "us-west-2"
