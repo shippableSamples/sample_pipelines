@@ -1,7 +1,7 @@
 resources:
   - name: nginx-image
     type: image
-    integration: pranay-docker
+    integration: ric03uec-docker
     source:
       name: "library/nginx"
       isPull: false
@@ -9,7 +9,7 @@ resources:
 
   - name: myEcsCluster
     type: ecsCluster
-    integration: pranay-ecs
+    integration: ric03uec-ecs
     source:
       name : "test-cluster" #name of the cluster we are deploying
       region: "us-west-2"
