@@ -13,3 +13,10 @@ resources:
     source:
       name : "test-cluster" #name of the cluster we are deploying
       region: "us-west-2"
+
+  - name: myEcsParams #test once more
+    type: params
+    source:
+      params:
+        foo: bar
+        api_url: https://api.shippable.com

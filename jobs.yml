@@ -3,6 +3,7 @@ jobs:
     type: manifest
     steps:
       - GET nginx-image
+      - GET myEcsParams
 
   - name: deploy-service
     type: ecsDeploy
