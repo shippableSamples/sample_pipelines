@@ -4,6 +4,7 @@ jobs:
     steps:
       - GET nginx-image
       - GET myEcsParams
+      - GET myEcsDockerOptions
 
   - name: deploy-service
     type: ecsDeploy

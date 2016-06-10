@@ -20,3 +20,11 @@ resources:
       params:
         foo: bar
         api_url: https://api.shippable.com
+
+  - name: myEcsDockerOptions
+    type: dockerOptions
+    source:
+      memory: 400
+      cpu-shares: 2
+      portMappings:
+        - 8081:80
