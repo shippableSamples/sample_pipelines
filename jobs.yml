@@ -2,12 +2,12 @@ jobs:
   - name: generate-manifest
     type: manifest
     steps:
-      - GET nginx-image
-      - GET myEcsParams
-      - GET myEcsDockerOptions
+      - GET: nginx-image
+      - GET: myEcsParams
+      - GET: myEcsDockerOptions
 
   - name: deploy-service
     type: ecsDeploy
     steps:
-      - GET generate-manifest
-      - GET myEcsCluster
+      - GET: generate-manifest
+      - GET: myEcsCluster
