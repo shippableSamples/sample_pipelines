@@ -1,13 +1,13 @@
 jobs:
-  - name: generate-manifest
+  - name: generate-manifest-ric03uec
     type: manifest
     steps:
       - GET: nginx-image
       - GET: myEcsParams
       - GET: myEcsDockerOptions
 
-  - name: deploy-service
+  - name: deploy-service-ric03uec
     type: ecsDeploy
     steps:
-      - GET: generate-manifest
+      - GET: generate-manifest-ric03uec
       - GET: myEcsCluster
