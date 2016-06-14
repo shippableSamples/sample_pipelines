@@ -1,5 +1,5 @@
 resources:
-  - name: dv-image 
+  - name: dv-image
     type: image
     integration: ric03uec-dh
     source:
@@ -26,7 +26,8 @@ resources:
     integration: ric03uec-dh
     source:
       name: "aye0aye/box"
-      isPull: false tag: "master.35"
+      isPull: false
+      tag: "master.35"
 
   - name: box-params
     type: params
