@@ -1,30 +1,65 @@
 resources:
-  - name: nginx-image
+  - name: dv-image 
     type: image
-    integration: pranay-docker
+    integration: ric03uec-dh
     source:
       name: "library/nginx"
       isPull: false
       tag: latest
 
-  - name: myEcsCluster
-    type: ecsCluster
-    integration: pranay-ecs
+  - name: dv-opts
+    type: dockerOptions
     source:
-      name : "test-cluster" #name of the cluster we are deploying
-      region: "us-west-2"
+      memory: 64
+      cpu-shares: 256
+      portMappings:
+        - 80:80
 
-  - name: myEcsParams #test once more
+  - name: dv-params
     type: params
     source:
       params:
-        foo: bar
-        api_url: https://api.shippable.com
+        MONGO_API_URL: "localhost:28017"
 
-  - name: myEcsDockerOptions
+  - name: box-image
+    type: image
+    integration: ric03uec-dh
+    source:
+      name: "aye0aye/box"
+      isPull: false tag: "master.35"
+
+  - name: box-params
+    type: params
+    source:
+      params:
+        DB_HOST: "ds015700.mlab.com"
+        DB_NAME: "ayeaye"
+        DB_PORT: "15700"
+        DB_USERNAME: "aye0aye"
+        DB_PASSWORD: "aye0aye"
+        ENVIRONMENT: "test-aws"
+
+  - name: box-opts
     type: dockerOptions
     source:
-      memory: 400
-      cpu-shares: 2
-      portMappings:
-        - 8081:80
+      memory: 64
+      cpu-shares: 512
+
+  - name: env-prod
+    type: ecsCluster
+    integration: ric03uec-ecs
+    source:
+      name : "prod-aws" #name of the cluster we are deploying
+      region: "us-east-1"
+
+  - name: env-test
+    type: ecsCluster
+    integration: ric03uec-ecs
+    source:
+      name : "test-aws" #name of the cluster we are deploying
+      region: "us-east-1"
+
+  - name: box-scaler
+    type: replicas
+    source:
+      count: 1

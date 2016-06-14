@@ -1,13 +1,32 @@
 jobs:
-  - name: generate-manifest
+  - name: dv-man
     type: manifest
     steps:
-      - GET nginx-image
-      - GET myEcsParams
-      - GET myEcsDockerOptions
+      - GET: dv-image
+      - GET: dv-opts
+      - GET: dv-params
 
-  - name: deploy-service
+  - name: dv-test
     type: ecsDeploy
     steps:
-      - GET generate-manifest
-      - GET myEcsCluster
+      - GET: dv-man
+      - GET: env-test
+
+  - name: box-man
+    type: manifest
+    steps:
+      - GET: box-image
+      - GET: box-opts
+      - GET: box-params
+
+  - name: box-test
+    type: ecsDeploy
+    steps:
+      - GET: box-man
+      - GET: env-test
+
+  - name: box-prod
+    type: ecsDeploy
+    steps:
+      - GET: box-man
+      - GET: env-prod
