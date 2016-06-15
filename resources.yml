@@ -64,3 +64,16 @@ resources:
     type: replicas
     source:
       count: 1
+  
+  - name: env-dcl
+    type: dclCluster
+    integration: sid-dcl
+    source:
+     name : "docker-cloud-node" #name of the cluster we are deploying
+  
+  - name: env-gke
+    type: gkeCluster
+    integration: gke-int
+    source:
+      name: "sid-test-gke-cluster-1" #name of the cluster we are deploying.
+      region: "us-central1-b"   
