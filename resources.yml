@@ -64,3 +64,9 @@ resources:
     type: replicas
     source:
       count: 1
+  
+  - name: env-dcl
+    type: dclCluster
+    integration: sid-dcl
+    source:
+     name : "docker-cloud-node" #name of the cluster we are deploying
