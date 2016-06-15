@@ -24,6 +24,18 @@ jobs:
     steps:
       - GET: box-man
       - GET: env-test
+  
+  - name: box-dcl
+    type: dclDeploy
+    steps:
+      - GET: box-man
+      - GET: env-dcl  
+      
+  - name: box-gke
+    type: gkeDeploy
+    steps:
+      - GET: box-man
+      - GET: env-gke      
 
   - name: box-prod
     type: ecsDeploy
