@@ -13,7 +13,7 @@ resources:
       memory: 64
       cpu-shares: 256
       portMappings:
-        - 80:80
+        - "80:80"
 
   - name: dv-params
     type: params
