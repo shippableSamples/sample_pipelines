@@ -42,3 +42,10 @@ jobs:
     steps:
       - GET: box-man
       - GET: env-prod
+
+  - name: multi-manifest
+    type:  ecsDeploy
+    steps:
+      - GET: box-man
+      - GET: dv-man
+      - GET: env-test
