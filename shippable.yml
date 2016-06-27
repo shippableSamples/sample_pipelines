@@ -9,3 +9,4 @@ build:
   ci:
     - python --version
     - echo "hello world"
+    - echo "here it goes again"
