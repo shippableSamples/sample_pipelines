@@ -49,3 +49,11 @@ jobs:
       - GET: box-man
       - GET: dv-man
       - GET: env-test
+
+  - name: release-one
+    type: release
+    options:
+      action: minor
+    steps:
+      - GET: version-resource
+      - GET: dv-man
