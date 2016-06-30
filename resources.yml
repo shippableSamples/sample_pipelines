@@ -100,3 +100,10 @@ resources:
       publishAllPorts : true
       #publishAllPorts assigns a public ip to the container and gives endpoint
       #for accessing the exposed ports.
+
+  - name: infra-repo
+    type: gitRepo
+    integration: github
+    source:
+      name: shippableSamples/infra-repo
+      branch: master

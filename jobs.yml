@@ -69,3 +69,11 @@ jobs:
     steps:
       - GET: box-tripub-man
       - GET: env-tripub
+
+  - name: infra-provision
+    type: runSh
+    steps:
+      GET: infra-repo
+      TASK:
+        - script: ls
+        - script: ./GET/infra-repo/infra-repo/provision.sh
