@@ -24,18 +24,18 @@ jobs:
     steps:
       - GET: box-man
       - GET: env-test
-  
+
   - name: box-dcl
     type: dclDeploy
     steps:
       - GET: box-man
-      - GET: env-dcl  
-      
+      - GET: env-dcl
+
   - name: box-gke
     type: gkeDeploy
     steps:
       - GET: box-man
-      - GET: env-gke      
+      - GET: env-gke
 
   - name: box-prod
     type: ecsDeploy
@@ -57,3 +57,15 @@ jobs:
     steps:
       - GET: version-resource
       - GET: dv-man
+
+  - name: box-tripub-man
+    type: manifest
+    steps:
+      - GET: box-image
+      - GET: box-tripub-opts
+
+  - name: box-tripub
+    type: tripubDeploy
+    steps:
+      - GET: box-tripub-man
+      - GET: env-tripub
