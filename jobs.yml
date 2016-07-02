@@ -24,18 +24,18 @@ jobs:
     steps:
       - GET: box-man
       - GET: env-test
-  
+
   - name: box-dcl
     type: dclDeploy
     steps:
       - GET: box-man
-      - GET: env-dcl  
-      
+      - GET: env-dcl
+
   - name: box-gke
     type: gkeDeploy
     steps:
       - GET: box-man
-      - GET: env-gke      
+      - GET: env-gke
 
   - name: box-prod
     type: ecsDeploy
@@ -49,3 +49,31 @@ jobs:
       - GET: box-man
       - GET: dv-man
       - GET: env-test
+
+  - name: release-one
+    type: release
+    options:
+      action: minor
+    steps:
+      - GET: version-resource
+      - GET: dv-man
+
+  - name: box-tripub-man
+    type: manifest
+    steps:
+      - GET: box-image
+      - GET: box-tripub-opts
+
+  - name: box-tripub
+    type: tripubDeploy
+    steps:
+      - GET: box-tripub-man
+      - GET: env-tripub
+
+  - name: infra-provision
+    type: runSh
+    steps:
+      GET: infra-repo
+      TASK:
+        - script: ls
+        - script: ./GET/infra-repo/infra-repo/provision.sh
