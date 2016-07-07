@@ -5,6 +5,8 @@ jobs:
       - GET: dv-image
       - GET: dv-opts
       - GET: dv-params
+        applyTo:
+          - dv-image
       - GET: trigger-dv-man
 
   - name: dv-test
