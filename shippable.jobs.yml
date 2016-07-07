@@ -5,6 +5,7 @@ jobs:
       - GET: dv-image
       - GET: dv-opts
       - GET: dv-params
+      - GET: trigger-dv-man
 
   - name: dv-test
     type: ecsDeploy
