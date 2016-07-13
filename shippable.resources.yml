@@ -11,7 +11,7 @@ resources:
     type: dockerOptions
     source:
       memory: 64
-      cpu-shares: 256
+      cpuShares: 256
       portMappings:
         - "80:80"
 
@@ -44,7 +44,7 @@ resources:
     type: dockerOptions
     source:
       memory: 64
-      cpu-shares: 512
+      cpuShares: 512
 
   - name: env-prod
     type: ecsCluster
