@@ -4,7 +4,6 @@ resources:
     integration: ric03uec-dh
     pointer:
       sourceName: "library/nginx"
-      isPull: false
     initialVersion:
       versionName: latest
 
@@ -27,7 +26,6 @@ resources:
     integration: ric03uec-dh
     pointer:
       sourceName: "aye0aye/box"
-      isPull: false
     initialVersion:
       versionName: "master.35"
 

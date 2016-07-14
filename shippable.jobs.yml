@@ -3,6 +3,7 @@ jobs:
     type: manifest
     steps:
       - GET: dv-image
+        pull: false
       - GET: dv-opts
       - GET: dv-params
         applyTo:
@@ -19,6 +20,7 @@ jobs:
     type: manifest
     steps:
       - GET: box-image
+        pull: false
       - GET: box-opts
       - GET: box-params
 
@@ -65,6 +67,7 @@ jobs:
     type: manifest
     steps:
       - GET: box-image
+        pull: false
       - GET: box-tripub-opts
 
   - name: box-tripub
