@@ -2,14 +2,15 @@ resources:
   - name: dv-image
     type: image
     integration: ric03uec-dh
-    source:
-      name: "library/nginx"
+    pointer:
+      sourceName: "library/nginx"
       isPull: false
-      tag: latest
+    initialVersion:
+      versionName: latest
 
   - name: dv-opts
     type: dockerOptions
-    source:
+    pointer:
       memory: 64
       cpuShares: 256
       portMappings:
@@ -17,21 +18,22 @@ resources:
 
   - name: dv-params
     type: params
-    source:
+    pointer:
       params:
         MONGO_API_URL: "localhost:28017"
 
   - name: box-image
     type: image
     integration: ric03uec-dh
-    source:
-      name: "aye0aye/box"
+    pointer:
+      sourceName: "aye0aye/box"
       isPull: false
-      tag: "master.35"
+    initialVersion:
+      versionName: "master.35"
 
   - name: box-params
     type: params
-    source:
+    pointer:
       params:
         DB_HOST: "ds015700.mlab.com"
         DB_NAME: "ayeaye"
@@ -42,56 +44,56 @@ resources:
 
   - name: box-opts
     type: dockerOptions
-    source:
+    pointer:
       memory: 64
       cpuShares: 512
 
   - name: env-prod
     type: ecsCluster
     integration: ric03uec-ecs
-    source:
-      name : "prod-aws" #name of the cluster we are deploying
+    pointer:
+      sourceName : "prod-aws" #name of the cluster we are deploying
       region: "us-east-1"
 
   - name: env-test
     type: ecsCluster
     integration: ric03uec-ecs
-    source:
-      name : "test-aws" #name of the cluster we are deploying
+    pointer:
+      sourceName : "test-aws" #name of the cluster we are deploying
       region: "us-east-1"
 
   - name: box-scaler
     type: replicas
-    source:
+    pointer:
       count: 1
 
   - name: env-dcl
     type: dclCluster
     integration: sid-dcl
-    source:
-     name : "docker-cloud-node" #name of the cluster we are deploying
+    pointer:
+     sourceName : "docker-cloud-node" #name of the cluster we are deploying
 
   - name: env-gke
     type: gkeCluster
     integration: gke-int
-    source:
-      name: "sid-test-gke-cluster-1" #name of the cluster we are deploying.
+    pointer:
+      sourceName: "sid-test-gke-cluster-1" #name of the cluster we are deploying.
       region: "us-central1-b"
 
   - name: version-resource
     type: version
-    source:
-      base: "0.0.1-beta"
+    initialVersion:
+      versionName: "0.0.1-beta"
 
   - name: env-tripub
     type: tripubCluster
     integration: tripub-int
-    source:
+    pointer:
       region: "us-east-1"
 
   - name: box-tripub-opts
     type: dockerOptions
-    source:
+    pointer:
       memory: 128
       #Triton has standard values for memory 128,512 etc.
       #If non standard values is given in the memory, it chooses the closest
@@ -104,6 +106,6 @@ resources:
   - name: infra-repo
     type: gitRepo
     integration: github
-    source:
-      name: shippableSamples/infra-repo
+    pointer:
+      sourceName: shippableSamples/infra-repo
       branch: master
