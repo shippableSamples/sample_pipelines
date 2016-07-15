@@ -51,7 +51,6 @@ resources:
     integration: ric03uec-ecs
     pointer:
       sourceName : "prod-aws" #name of the cluster we are deploying
-    version:
       region: "us-east-1"
 
   - name: env-test
@@ -59,7 +58,6 @@ resources:
     integration: ric03uec-ecs
     pointer:
       sourceName : "test-aws" #name of the cluster we are deploying
-    version:
       region: "us-east-1"
 
   - name: box-scaler
@@ -78,7 +76,6 @@ resources:
     integration: gke-int
     pointer:
       sourceName: "sid-test-gke-cluster-1" #name of the cluster we are deploying.
-    version:
       region: "us-central1-b"
 
   - name: version-resource
@@ -89,7 +86,7 @@ resources:
   - name: env-tripub
     type: tripubCluster
     integration: tripub-int
-    version:
+    pointer:
       region: "us-east-1"
 
   - name: box-tripub-opts
