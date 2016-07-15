@@ -9,12 +9,18 @@ jobs:
         applyTo:
           - dv-image
       - GET: trigger-dv-man
+    on_success:
+      - echo 'this is on_success step of dv-man of type manifest'
+    on_failure:
+      - echo 'this is on_failure step of dv-man of type manifest'
 
   - name: dv-test
     type: ecsDeploy
     steps:
       - GET: dv-man
       - GET: env-test
+    on_success:
+      - echo 'this is on_success step of dv-test of type ecsDeploy'
 
   - name: box-man
     type: manifest
