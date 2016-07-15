@@ -9,7 +9,7 @@ resources:
 
   - name: dv-opts
     type: dockerOptions
-    pointer:
+    version:
       memory: 64
       cpuShares: 256
       portMappings:
@@ -17,7 +17,7 @@ resources:
 
   - name: dv-params
     type: params
-    pointer:
+    version:
       params:
         MONGO_API_URL: "localhost:28017"
 
@@ -31,7 +31,7 @@ resources:
 
   - name: box-params
     type: params
-    pointer:
+    version:
       params:
         DB_HOST: "ds015700.mlab.com"
         DB_NAME: "ayeaye"
@@ -42,7 +42,7 @@ resources:
 
   - name: box-opts
     type: dockerOptions
-    pointer:
+    version:
       memory: 64
       cpuShares: 512
 
@@ -51,6 +51,7 @@ resources:
     integration: ric03uec-ecs
     pointer:
       sourceName : "prod-aws" #name of the cluster we are deploying
+    version:
       region: "us-east-1"
 
   - name: env-test
@@ -58,11 +59,12 @@ resources:
     integration: ric03uec-ecs
     pointer:
       sourceName : "test-aws" #name of the cluster we are deploying
+    version:
       region: "us-east-1"
 
   - name: box-scaler
     type: replicas
-    pointer:
+    version:
       count: 1
 
   - name: env-dcl
@@ -76,6 +78,7 @@ resources:
     integration: gke-int
     pointer:
       sourceName: "sid-test-gke-cluster-1" #name of the cluster we are deploying.
+    version:
       region: "us-central1-b"
 
   - name: version-resource
@@ -86,12 +89,12 @@ resources:
   - name: env-tripub
     type: tripubCluster
     integration: tripub-int
-    pointer:
+    version:
       region: "us-east-1"
 
   - name: box-tripub-opts
     type: dockerOptions
-    pointer:
+    version:
       memory: 128
       #Triton has standard values for memory 128,512 etc.
       #If non standard values is given in the memory, it chooses the closest

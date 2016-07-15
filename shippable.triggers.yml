@@ -1,5 +1,5 @@
 triggers:
    - name: trigger-dv-man
      type: trigger
-     pointer:
+     version:
        counter: 1
