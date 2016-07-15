@@ -4,7 +4,7 @@ resources:
     integration: ric03uec-dh
     pointer:
       sourceName: "library/nginx"
-    initialVersion:
+    seed:
       versionName: latest
 
   - name: dv-opts
@@ -26,7 +26,7 @@ resources:
     integration: ric03uec-dh
     pointer:
       sourceName: "aye0aye/box"
-    initialVersion:
+    seed:
       versionName: "master.35"
 
   - name: box-params
@@ -80,7 +80,7 @@ resources:
 
   - name: version-resource
     type: version
-    initialVersion:
+    seed:
       versionName: "0.0.1-beta"
 
   - name: env-tripub
