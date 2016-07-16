@@ -8,6 +8,7 @@ jobs:
       - GET: dv-params
         applyTo:
           - dv-image
+      - TASK: managed
       - GET: trigger-dv-man
     on_success:
       - echo 'this is on_success step of dv-man of type manifest'
@@ -19,6 +20,7 @@ jobs:
     steps:
       - GET: dv-man
       - GET: env-test
+      - TASK: managed
     on_success:
       - echo 'this is on_success step of dv-test of type ecsDeploy'
 
@@ -29,30 +31,35 @@ jobs:
         pull: false
       - GET: box-opts
       - GET: box-params
+      - TASK: managed
 
   - name: box-test
     type: ecsDeploy
     steps:
       - GET: box-man
       - GET: env-test
+      - TASK: managed
 
   - name: box-dcl
     type: dclDeploy
     steps:
       - GET: box-man
       - GET: env-dcl
+      - TASK: managed
 
   - name: box-gke
     type: gkeDeploy
     steps:
       - GET: box-man
       - GET: env-gke
+      - TASK: managed
 
   - name: box-prod
     type: ecsDeploy
     steps:
       - GET: box-man
       - GET: env-prod
+      - TASK: managed
 
   - name: multi-manifest
     type:  ecsDeploy
@@ -60,6 +67,7 @@ jobs:
       - GET: box-man
       - GET: dv-man
       - GET: env-test
+      - TASK: managed
 
   - name: release-one
     type: release
@@ -68,6 +76,7 @@ jobs:
     steps:
       - GET: version-resource
       - GET: dv-man
+      - TASK: managed
 
   - name: box-tripub-man
     type: manifest
@@ -75,17 +84,19 @@ jobs:
       - GET: box-image
         pull: false
       - GET: box-tripub-opts
+      - TASK: managed
 
   - name: box-tripub
     type: tripubDeploy
     steps:
       - GET: box-tripub-man
       - GET: env-tripub
+      - TASK: managed
 
   - name: infra-provision
     type: runSh
     steps:
-      GET: infra-repo
-      TASK:
+      - GET: infra-repo
+      - TASK:
         - script: ls
         - script: ./GET/infra-repo/infra-repo/provision.sh
