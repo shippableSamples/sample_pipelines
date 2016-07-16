@@ -2,14 +2,14 @@ jobs:
   - name: dv-man
     type: manifest
     steps:
-      - GET: dv-image
+      - IN: dv-image
         pull: false
-      - GET: dv-opts
-      - GET: dv-params
+      - IN: dv-opts
+      - IN: dv-params
         applyTo:
           - dv-image
       - TASK: managed
-      - GET: trigger-dv-man
+      - IN: trigger-dv-man
     on_success:
       - echo 'this is on_success step of dv-man of type manifest'
     on_failure:
@@ -18,8 +18,8 @@ jobs:
   - name: dv-test
     type: ecsDeploy
     steps:
-      - GET: dv-man
-      - GET: env-test
+      - IN: dv-man
+      - IN: env-test
       - TASK: managed
         deployMethod: upgrade
     on_success:
@@ -28,77 +28,77 @@ jobs:
   - name: box-man
     type: manifest
     steps:
-      - GET: box-image
+      - IN: box-image
         pull: false
-      - GET: box-opts
-      - GET: box-params
+      - IN: box-opts
+      - IN: box-params
       - TASK: managed
 
   - name: box-test
     type: ecsDeploy
     steps:
-      - GET: box-man
-      - GET: env-test
+      - IN: box-man
+      - IN: env-test
       - TASK: managed
         deployMethod: upgrade
 
   - name: box-dcl
     type: dclDeploy
     steps:
-      - GET: box-man
-      - GET: env-dcl
+      - IN: box-man
+      - IN: env-dcl
       - TASK: managed
 
   - name: box-gke
     type: gkeDeploy
     steps:
-      - GET: box-man
-      - GET: env-gke
+      - IN: box-man
+      - IN: env-gke
       - TASK: managed
 
   - name: box-prod
     type: ecsDeploy
     steps:
-      - GET: box-man
-      - GET: env-prod
+      - IN: box-man
+      - IN: env-prod
       - TASK: managed
 
   - name: multi-manifest
     type:  ecsDeploy
     steps:
-      - GET: box-man
-      - GET: dv-man
-      - GET: env-test
+      - IN: box-man
+      - IN: dv-man
+      - IN: env-test
       - TASK: managed
         deployMethod: upgrade
 
   - name: release-one
     type: release
     steps:
-      - GET: version-resource
-      - GET: dv-man
+      - IN: version-resource
+      - IN: dv-man
       - TASK: managed
         bump: major
 
   - name: box-tripub-man
     type: manifest
     steps:
-      - GET: box-image
+      - IN: box-image
         pull: false
-      - GET: box-tripub-opts
+      - IN: box-tripub-opts
       - TASK: managed
 
   - name: box-tripub
     type: tripubDeploy
     steps:
-      - GET: box-tripub-man
-      - GET: env-tripub
+      - IN: box-tripub-man
+      - IN: env-tripub
       - TASK: managed
 
   - name: infra-provision
     type: runSh
     steps:
-      - GET: infra-repo
+      - IN: infra-repo
       - TASK:
         - script: ls
         - script: ./GET/infra-repo/infra-repo/provision.sh
