@@ -21,6 +21,7 @@ jobs:
       - GET: dv-man
       - GET: env-test
       - TASK: managed
+        deployMethod: upgrade
     on_success:
       - echo 'this is on_success step of dv-test of type ecsDeploy'
 
@@ -39,6 +40,7 @@ jobs:
       - GET: box-man
       - GET: env-test
       - TASK: managed
+        deployMethod: upgrade
 
   - name: box-dcl
     type: dclDeploy
@@ -68,15 +70,15 @@ jobs:
       - GET: dv-man
       - GET: env-test
       - TASK: managed
+        deployMethod: upgrade
 
   - name: release-one
     type: release
-    options:
-      action: minor
     steps:
       - GET: version-resource
       - GET: dv-man
       - TASK: managed
+        bump: major
 
   - name: box-tripub-man
     type: manifest

@@ -48,14 +48,14 @@ resources:
 
   - name: env-prod
     type: ecsCluster
-    integration: ric03uec-ecs
+    integration: stephAWS
     pointer:
       sourceName : "prod-aws" #name of the cluster we are deploying
       region: "us-east-1"
 
   - name: env-test
     type: ecsCluster
-    integration: ric03uec-ecs
+    integration: stephAWS
     pointer:
       sourceName : "test-aws" #name of the cluster we are deploying
       region: "us-east-1"
