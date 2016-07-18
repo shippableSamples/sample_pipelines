@@ -47,14 +47,14 @@ resources:
       cpuShares: 512
 
   - name: env-prod
-    type: ecsCluster
+    type: cluster
     integration: ric03uec-ecs
     pointer:
       sourceName : "prod-aws" #name of the cluster we are deploying
       region: "us-east-1"
 
   - name: env-test
-    type: ecsCluster
+    type: cluster
     integration: ric03uec-ecs
     pointer:
       sourceName : "test-aws" #name of the cluster we are deploying
@@ -66,13 +66,13 @@ resources:
       count: 1
 
   - name: env-dcl
-    type: dclCluster
+    type: cluster
     integration: sid-dcl
     pointer:
      sourceName : "docker-cloud-node" #name of the cluster we are deploying
 
   - name: env-gke
-    type: gkeCluster
+    type: cluster
     integration: gke-int
     pointer:
       sourceName: "sid-test-gke-cluster-1" #name of the cluster we are deploying.
@@ -84,7 +84,7 @@ resources:
       versionName: "0.0.1-beta"
 
   - name: env-tripub
-    type: tripubCluster
+    type: cluster
     integration: tripub-int
     pointer:
       region: "us-east-1"
