@@ -15,6 +15,32 @@ jobs:
     on_failure:
       - echo 'this is on_failure step of dv-man of type manifest'
 
+  - name: dv-man-versionName
+    type: manifest
+    steps:
+      - IN: dv-image
+        pull: false
+        versionName: latest
+      - IN: dv-opts
+      - IN: dv-params
+        applyTo:
+          - dv-image
+      - TASK: managed
+      - IN: trigger-dv-man
+
+  - name: dv-man-versionNumber
+    type: manifest
+    steps:
+      - IN: dv-image
+        pull: false
+        versionId: 1
+      - IN: dv-opts
+      - IN: dv-params
+        applyTo:
+          - dv-image
+      - TASK: managed
+      - IN: trigger-dv-man
+
   - name: dv-test
     type: ecsDeploy
     steps:
