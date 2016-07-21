@@ -33,7 +33,7 @@ jobs:
     steps:
       - IN: dv-image
         pull: false
-        versionId: 1
+        versionNumber: 1
       - IN: dv-opts
       - IN: dv-params
         applyTo:
