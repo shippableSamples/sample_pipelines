@@ -43,6 +43,8 @@ jobs:
 
   - name: dv-test
     type: ecsDeploy
+    on_start:
+      - NOTIFY: slackNotification
     steps:
       - IN: dv-man
       - IN: env-test
@@ -50,6 +52,9 @@ jobs:
         deployMethod: upgrade
     on_success:
       - echo 'this is on_success step of dv-test of type ecsDeploy'
+      - NOTIFY: slackNotifcation
+    on_failure:
+      - NOTIFY: slackNotification
 
   - name: box-man
     type: manifest

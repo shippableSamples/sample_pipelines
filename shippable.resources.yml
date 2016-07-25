@@ -113,3 +113,10 @@ resources:
     type: time
     seed:
       interval: "*/2 * * * *"
+
+  - name: slackNotification
+    type: notification
+    integration: slack
+    pointer:
+      recipients:
+        - #slackchannel
