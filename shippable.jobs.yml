@@ -51,7 +51,6 @@ jobs:
       - TASK: managed
         deployMethod: upgrade
     on_success:
-      - echo 'this is on_success step of dv-test of type ecsDeploy'
       - NOTIFY: slackNotifcation
     on_failure:
       - NOTIFY: slackNotification
@@ -133,3 +132,6 @@ jobs:
       - TASK:
         - script: ls
         - script: ./GET/infra-repo/infra-repo/provision.sh
+      - on_success:
+        - echo 'This block executes after TASK section executes successfully'
+        - NOTIFY: slackNotifcation
