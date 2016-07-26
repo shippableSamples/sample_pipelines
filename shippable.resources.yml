@@ -119,4 +119,4 @@ resources:
     integration: slack
     pointer:
       recipients:
-        - #slackchannel
+        - "#slackchannel"
