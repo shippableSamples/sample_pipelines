@@ -42,7 +42,7 @@ jobs:
       - IN: trigger-dv-man
 
   - name: dv-test
-    type: ecsDeploy
+    type: deploy
     on_start:
       - NOTIFY: slackNotification
     steps:
@@ -65,7 +65,7 @@ jobs:
       - TASK: managed
 
   - name: box-test
-    type: ecsDeploy
+    type: deploy
     steps:
       - IN: box-man
       - IN: env-test
@@ -73,28 +73,28 @@ jobs:
         deployMethod: upgrade
 
   - name: box-dcl
-    type: dclDeploy
+    type: deploy
     steps:
       - IN: box-man
       - IN: env-dcl
       - TASK: managed
 
   - name: box-gke
-    type: gkeDeploy
+    type: deploy
     steps:
       - IN: box-man
       - IN: env-gke
       - TASK: managed
 
   - name: box-prod
-    type: ecsDeploy
+    type: deploy
     steps:
       - IN: box-man
       - IN: env-prod
       - TASK: managed
 
   - name: multi-manifest
-    type:  ecsDeploy
+    type:  deploy
     steps:
       - IN: box-man
       - IN: dv-man
@@ -119,7 +119,7 @@ jobs:
       - TASK: managed
 
   - name: box-tripub
-    type: tripubDeploy
+    type: deploy
     steps:
       - IN: box-tripub-man
       - IN: env-tripub
