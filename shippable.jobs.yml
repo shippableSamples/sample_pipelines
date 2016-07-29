@@ -90,6 +90,7 @@ jobs:
     type: deploy
     steps:
       - IN: box-man
+        switch: off
       - IN: env-prod
       - TASK: managed
 
