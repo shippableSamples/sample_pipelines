@@ -11,9 +11,9 @@ jobs:
       - TASK: managed
       - IN: trigger-dv-man
     on_success:
-      - echo 'this is on_success step of dv-man of type manifest'
+      - script: echo 'this is on_success step of dv-man of type manifest'
     on_failure:
-      - echo 'this is on_failure step of dv-man of type manifest'
+      - script: echo 'this is on_failure step of dv-man of type manifest'
 
   - name: dv-man-versionName
     type: manifest
@@ -134,7 +134,7 @@ jobs:
         - script: ls
         - script: ./GET/infra-repo/infra-repo/provision.sh
     on_success:
-      - echo 'This block executes after TASK section executes successfully'
+      - script: echo 'This block executes after TASK section executes successfully'
       - NOTIFY: slackNotifcation
 
   - name: build-dv-image
