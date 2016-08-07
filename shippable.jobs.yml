@@ -132,7 +132,7 @@ jobs:
       - IN: infra-repo
       - TASK:
         - script: ls
-        - script: ./GET/infra-repo/infra-repo/provision.sh
+        - script: ./IN/infra-repo/gitRepo/provision.sh
     on_success:
       - script: echo 'This block executes after TASK section executes successfully'
       - NOTIFY: slackNotifcation
