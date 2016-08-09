@@ -20,6 +20,8 @@ resources:
     version:
       params:
         MONGO_API_URL: "localhost:28017"
+    flags:
+      - dv
 
   - name: box-image
     type: image
@@ -39,6 +41,8 @@ resources:
         DB_USERNAME: "aye0aye"
         DB_PASSWORD: "aye0aye"
         ENVIRONMENT: "test-aws"
+    flags:
+      - box
 
   - name: box-opts
     type: dockerOptions
@@ -64,6 +68,8 @@ resources:
     type: replicas
     version:
       count: 1
+    flags:
+      - replicas
 
   - name: env-dcl
     type: cluster
@@ -88,6 +94,8 @@ resources:
     integration: tripub-int
     pointer:
       region: "us-east-1"
+    flags:
+      - tripub
 
   - name: box-tripub-opts
     type: dockerOptions
@@ -100,6 +108,8 @@ resources:
       publishAllPorts : true
       #publishAllPorts assigns a public ip to the container and gives endpoint
       #for accessing the exposed ports.
+    flags:
+      - tripub
 
   - name: infra-repo
     type: gitRepo
@@ -113,6 +123,8 @@ resources:
     type: time
     seed:
       interval: "*/2 * * * *"
+    flags:
+      - nightly
 
   - name: slackNotification
     type: notification

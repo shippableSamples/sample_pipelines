@@ -14,6 +14,8 @@ jobs:
       - script: echo 'this is on_success step of dv-man of type manifest'
     on_failure:
       - script: echo 'this is on_failure step of dv-man of type manifest'
+    flags:
+      - dv
 
   - name: dv-man-versionName
     type: manifest
@@ -63,6 +65,8 @@ jobs:
       - IN: box-opts
       - IN: box-params
       - TASK: managed
+    flags:
+      - box
 
   - name: box-test
     type: deploy
