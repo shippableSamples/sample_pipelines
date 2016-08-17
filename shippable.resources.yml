@@ -132,3 +132,10 @@ resources:
     pointer:
       recipients:
         - "#slackchannel"
+        
+  - name: myEmail
+    type: notification
+    pointer:
+      method: email
+      recipients: 
+        -  "john@shippable.com"
