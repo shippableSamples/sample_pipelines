@@ -127,3 +127,7 @@ resources:
       method: email
       recipients: 
         -  "john@shippable.com"
+
+  - name: slackIntegration
+    type: integration
+    integration: slack
