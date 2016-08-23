@@ -53,7 +53,7 @@ jobs:
       - TASK: managed
         deployMethod: upgrade
     on_success:
-      - NOTIFY: slackNotifcation
+      - NOTIFY: slackNotification
     on_failure:
       - NOTIFY: slackNotification
 
