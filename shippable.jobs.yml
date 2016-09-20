@@ -127,6 +127,7 @@ jobs:
     type: deploy
     steps:
       - IN: box-tripub-man
+        force: true
       - IN: env-tripub
       - TASK: managed
 
