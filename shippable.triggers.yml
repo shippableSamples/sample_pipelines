@@ -4,7 +4,12 @@ triggers:
     version:
      counter: 1
 
-  - name: trigger-app-manifest
+  - name: trigger-jfrog-manifest
+    type: trigger
+    version:
+     counter: 1
+
+  - name: trigger-rawFile-manifest
     type: trigger
     version:
      counter: 1

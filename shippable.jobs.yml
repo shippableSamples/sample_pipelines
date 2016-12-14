@@ -150,15 +150,35 @@ jobs:
         - script: "echo 'versionName=latest' > /build/state/dv-image.env"
       - OUT: dv-image
 
-  - name: app-manifest
+  - name: app-jfrog-manifest
     type: manifest
     steps:
-      - IN: app-package
-      - IN: trigger-app-manifest
+      - IN: app-package-jfrog
+      - IN: trigger-jfrog-manifest
 
-  - name: app-package-deploy
+  - name: app-rawFile-manifest
+    type: manifest
+    steps:
+      - IN: app-package-rawFile
+      - IN: trigger-rawFile-manifest
+
+  # Fetches file from jfrog artifactory
+  # and transfers to the nodes in the cluster
+  - name: app-jfrog-deploy
     type: deploy
     steps:
-      - IN: app-manifest
+      - IN: app-jfrog-manifest
         force: true
       - IN: app-cluster
+
+  # Fetches file from URL and transfer to the nodes in the cluster
+  # and executes the commands and scripts on the nodes
+  - name: app-rawFile-deploy
+    type: deploy
+    steps:
+      - IN: app-rawFile-manifest
+        force: true
+      - IN: app-cluster
+      - TASK:
+          - script: cd /tmp/shippable && ls
+          - script: ~/restartWebServerService.sh

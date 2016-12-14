@@ -144,11 +144,18 @@ resources:
     type: integration
     integration: slack
 
-  - name: app-package
+  - name: app-package-jfrog
     type: file
     integration: xyzcompany-jfrog
     pointer:
       sourceName: pages/index.html
+    seed:
+      versionName: initial
+
+  - name: app-package-rawFile
+    type: file
+    pointer:
+      sourceName: https://raw.githubusercontent.com/shippableSamples/sample_pipelines/master/shippable.resources.yml
     seed:
       versionName: initial
 
