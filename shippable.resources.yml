@@ -162,5 +162,3 @@ resources:
   - name: app-cluster
     type: cluster
     integration: xyzcompany-node-cluster
-    pointer:
-      sourceName: 'production-cluster'
