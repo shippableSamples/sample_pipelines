@@ -1,5 +1,10 @@
 triggers:
-   - name: trigger-dv-man
-     type: trigger
-     version:
-       counter: 1
+  - name: trigger-dv-man
+    type: trigger
+    version:
+     counter: 1
+
+  - name: trigger-app-manifest
+    type: trigger
+    version:
+     counter: 1

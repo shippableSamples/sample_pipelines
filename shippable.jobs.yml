@@ -149,3 +149,16 @@ jobs:
       - TASK:
         - script: "echo 'versionName=latest' > /build/state/dv-image.env"
       - OUT: dv-image
+
+  - name: app-manifest
+    type: manifest
+    steps:
+      - IN: app-package
+      - IN: trigger-app-manifest
+
+  - name: app-package-deploy
+    type: deploy
+    steps:
+      - IN: app-manifest
+        force: true
+      - IN: app-cluster

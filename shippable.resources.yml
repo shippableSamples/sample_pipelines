@@ -132,14 +132,28 @@ resources:
     pointer:
       recipients:
         - "#slackchannel"
-        
+
   - name: myEmail
     type: notification
     pointer:
       method: email
-      recipients: 
+      recipients:
         -  "john@shippable.com"
 
   - name: slackIntegration
     type: integration
     integration: slack
+
+  - name: app-package
+    type: file
+    integration: xyzcompany-jfrog
+    pointer:
+      sourceName: pages/index.html
+    seed:
+      versionName: initial
+
+  - name: app-cluster
+    type: cluster
+    integration: xyzcompany-node-cluster
+    pointer:
+      sourceName: 'production-cluster'
