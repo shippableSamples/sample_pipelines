@@ -132,14 +132,33 @@ resources:
     pointer:
       recipients:
         - "#slackchannel"
-        
+
   - name: myEmail
     type: notification
     pointer:
       method: email
-      recipients: 
+      recipients:
         -  "john@shippable.com"
 
   - name: slackIntegration
     type: integration
     integration: slack
+
+  - name: app-package-jfrog
+    type: file
+    integration: xyzcompany-jfrog
+    pointer:
+      sourceName: pages/index.html
+    seed:
+      versionName: initial
+
+  - name: app-package-rawFile
+    type: file
+    pointer:
+      sourceName: https://raw.githubusercontent.com/shippableSamples/sample_pipelines/master/shippable.resources.yml
+    seed:
+      versionName: initial
+
+  - name: app-cluster
+    type: cluster
+    integration: xyzcompany-node-cluster

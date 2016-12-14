@@ -1,5 +1,15 @@
 triggers:
-   - name: trigger-dv-man
-     type: trigger
-     version:
-       counter: 1
+  - name: trigger-dv-man
+    type: trigger
+    version:
+     counter: 1
+
+  - name: trigger-jfrog-manifest
+    type: trigger
+    version:
+     counter: 1
+
+  - name: trigger-rawFile-manifest
+    type: trigger
+    version:
+     counter: 1
