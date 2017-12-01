@@ -1,10 +1,62 @@
-# Language setting
-language: python
+jobs:
+  - name: job-1
+    type: runSh
+    steps:
+      - TASK:
+        - script: failing it
 
-# Version number
-python:
-  - 2.7
+  - name: job-2
+    type: runSh
+    steps:
+      - TASK:
+        - script: secs=60; SECONDS=0; while (( SECONDS < secs )); do sleep 1; echo $SECONDS; done    
+        
+  - name: job-3
+    type: runSh
+    steps:
+      - TASK:
+        - script: secs=120; SECONDS=0; while (( SECONDS < secs )); do sleep 1; echo $SECONDS; done
 
-build:
-  ci:
-    - python --version
+  - name: job-4
+    type: runSh
+    dependencyMode: strict #change to `immediate` or `chrono` for testing those trigger modes
+    steps:
+      - IN: job-1
+      - IN: job-2
+      - IN: resource-1
+      - TASK:
+        - script: echo "done!"
+
+  - name: job-5
+    type: runSh
+    dependencyMode: strict #change to `immediate` or `chrono` for testing those trigger modes
+    steps:
+      - IN: job-3
+      - IN: job-2
+      - IN: resource-1
+      - TASK:
+        - script: echo "done!"
+
+  - name: job-6
+    type: runSh
+    steps:
+      - IN: job-4
+      - TASK:
+        - script: secs=120; SECONDS=0; while (( SECONDS < secs )); do sleep 1; echo $SECONDS; done
+        
+  - name: job-7
+    type: runSh
+    steps:
+      - IN: job-5
+      - TASK:
+        - script: secs=120; SECONDS=0; while (( SECONDS < secs )); do sleep 1; echo $SECONDS; done
+      
+resources:
+  - name: resource-1
+    type: image
+    integration: "docker-subint"
+    pointer:
+      sourceName: "ankul/nginx"
+    seed:
+      versionName: prod.10
+      
